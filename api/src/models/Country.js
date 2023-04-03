@@ -4,23 +4,11 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Country', {
-    count_id: {
-      type: DataTypes.UUID,
-      DefaultValue: DataTypes.UUIDV4,
+    id: {
+      type: DataTypes.STRING(3),
       allowNull: false,
       primaryKey: true,
-      validate: {
-        //todas letras
-				isAlpha: true,
-        //todos mayusculas
-				isUppercase: true,
-        //tres carcteres
-				isThree: (val) => {
-					if (val.length !== 3) {
-						throw Error('El ID debe contener 3 letras mayusculas');
-					}
-				}
-			},
+      unique: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -50,12 +38,12 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lenguages: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+    languages: {
+      type: DataTypes.JSON,
       allowNull: false,
     },
     moneda: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.JSON,
       allowNull: false,
     }
   },
