@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Landing from './modules/Landing'
+import { Landing, Home } from './views';
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route exact path='/' element={<Landing/>} />
+          <Route exact path='/home' element={<Home/>} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 .Home {
-    background-image: url('../../public/background.jpg');
+    background-image: url('../../../public/background.jpg');
     background-position: center center;
     display:grid;
     align-items: center;
@@ -10,8 +10,9 @@
 }
 
 .conts {
-    background-color: red;
     width: 100dvw;
+    height: fit-content;
+    font-size: xx-large;
 }
 
 .btn {
