@@ -1,0 +1,49 @@
+.Home {
+    background-image: url('../../public/background.jpg');
+    background-position: center center;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    width: 100dvw;
+    height: 100dvh;
+    background-repeat:repeat-x;
+}
+
+.conts {
+    background-color: red;
+    width: 100dvw;
+}
+
+.btn {
+  padding: 0.5em 2em 0.5em 2.5em;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 15px;
+  color: #fff6fb;
+  letter-spacing: 0.3em;
+  text-shadow: -2px 2px 5px rgb(78, 251, 193);
+  background-color: transparent;
+  border: 2px solid rgb(113, 204, 253);
+  box-shadow: 0 0 0px 1px aquamarine,
+    0 0 10px 2px rgb(78, 251, 193),
+    inset 0 0 0px 1px aquamarine,
+    inset 0 0 10px 2px rgb(78, 251, 193);
+  transition: 100ms;
+}
+
+.btn:hover {
+  box-shadow: 0 0 0px 1px aquamarine,
+    0 0 10px 2px rgb(78, 251, 193),
+    inset 0 0 0px 1px aquamarine,
+    inset 0 0 30px 2px rgb(78, 251, 193);
+  text-shadow: 0 0 10px rgb(78, 251, 193);
+  transform: translateY(-5px);
+}
+
+.btn:active {
+  box-shadow: 0 0 0px 1px aquamarine,
+    0 0 25px 2px rgb(78, 251, 193),
+    inset 0 0 0px 1px aquamarine,
+    inset 0 0 30px 2px rgb(78, 251, 193);
+  transform: translateY(1px);
+}
