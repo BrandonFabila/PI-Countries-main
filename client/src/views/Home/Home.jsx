@@ -1,10 +1,15 @@
 import style from './Home.module.css'
+import { Nav, CardsCont } from '../../modules/index'
 
 
 const Home = () => {
     return (
         <div className={style.Home}>
-            Home
+            <div>
+                Home
+            </div>
+            <CardsCont />
+            <Nav />
         </div>
     )
 }

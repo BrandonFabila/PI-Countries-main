@@ -5,7 +5,7 @@ const Landing = () => {
     return (
         <div className={style.Home}>
             <div className={style.conts} >
-                <h1>Countries</h1>
+                <h1>Countries Tour</h1>
                 <h3>Explora el mundo en un solo lugar</h3>
             </div>
             <div className={style.conts} >
