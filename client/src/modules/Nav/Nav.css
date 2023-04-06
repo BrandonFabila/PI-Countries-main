@@ -1,43 +1,39 @@
-.nav {
+nav {
     color: rgb(255, 255, 255);
-    background: rgba(130, 130, 130, 0.3);
+    background: rgba(255, 255, 255, 0.3);
     width: max-content;
     display: block;
-    padding: 0.25rem 2.7rem;
+    padding: 0.7rem 1.7rem;
     z-index: 2;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
     bottom: 2rem;
-    gap: 2.5rem;
-    border-radius: 30rem;
-    backdrop-filter: blur(15px);
-    height: 50px;
-}
-
-.nav-link {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
+    gap: 0.8rem;
+    border-radius: 3rem;
+    backdrop-filter: blur(15px);
 }
 
-.icon-container {
+nav a {
+    background: transparent;
+    padding: 0.9rem;
+    border-radius: 50%;
+    display: flex;
+    color: var(--color-light);
+    font-size: 1.1rem;
+}
 
-    background-color: aqua;
+nav a:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+nav a.active {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+nav a.icon {
     width: 50px;
     height: 50px;
-    display: row;
-    align-items: center;
-    justify-content: center;
 }
 
-.text-container {
-    align-self: center;
-    font-size: 1.1rem;
-    text-decoration: underline solid rgba(130, 130, 130, 0.3);
-}
-
-.text {
-    bottom: 2rem;
-}

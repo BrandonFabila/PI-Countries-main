@@ -1,5 +1,5 @@
 import style from './Home.module.css'
-import { Nav, CardsCont } from '../../modules/index'
+import { Nav, CardsCont  } from '../../modules/index'
 
 
 const Home = () => {
