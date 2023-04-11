@@ -1,0 +1,24 @@
+.contPrincipal {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+
+.imgCont {
+    width: 41dvh;
+    height: 25dvh;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.imgn {
+    width: 40dvh;
+    min-width: 40dvh;
+    max-height: 20dvh;
+    border-radius: 3.5dvw;
+}

@@ -1,0 +1,8 @@
+.Cont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid white;
+    gap: 5em;
+    justify-content: center;
+}

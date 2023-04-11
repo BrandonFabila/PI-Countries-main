@@ -1,0 +1,30 @@
+.cardCont {
+    width: 410px;
+    height: 250px;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.cardCont :hover {
+    color: #d1d731;
+}
+
+.flag {
+    width: 400px;
+    min-width: 400px;
+    max-height: 200px;
+    border-radius: 3.5dvw;
+}
+
+a {
+    text-decoration: none;
+    color: #d78531;
+}
+
+
+.continente {
+    color: rgba(255, 0, 0, 0.601);
+}

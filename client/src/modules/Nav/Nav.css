@@ -13,27 +13,31 @@ nav {
     gap: 0.8rem;
     border-radius: 3rem;
     backdrop-filter: blur(15px);
+    max-height: 50px;
+    align-items: center;
 }
 
 nav a {
     background: transparent;
-    padding: 0.9rem;
-    border-radius: 50%;
+    padding: 0.5rem;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
     display: flex;
     color: var(--color-light);
     font-size: 1.1rem;
 }
 
 nav a:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(84, 241, 76, 0.3);
 }
 
 nav a.active {
     background: var(--color-primary);
     color: var(--color-bg);
 }
-nav a.icon {
-    width: 50px;
-    height: 50px;
+
+conttext {
+    align-items: center;
 }
 

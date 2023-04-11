@@ -1,0 +1,11 @@
+.contPrincipal {
+    height: 20dvh;
+    width: 97.7dvw;
+    max-width: 100dvw;
+    max-height: 30dvh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+

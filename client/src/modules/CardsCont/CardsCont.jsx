@@ -1,14 +1,20 @@
-import './CardsCont.css'
+import style from './CardsCont.module.css'
 import { Card } from '../index.js'
-import { data } from '../index.js'
+import { useSelector } from 'react-redux'
 
 const CardsCont = () => {
+
+    //almaceno data gracias a useSelector que busca allCountries en estado global
+    const allCountries = useSelector( state => state.allCountries)
+    
     
     return (
-        <div>
+        <div className={style.Cont} >
             {
-            data.map(country => {
-                return <Card 
+            //&& asegura de que no sea un rreglo vacio
+            allCountries && allCountries.map(country => {
+                return <Card
+                    key={country.id}
                     id={country.id}
                     name={country.name}
                     img={country.img}

@@ -11,8 +11,8 @@ const Nav = () => {
   const location = useLocation();
 
   const styles = {
-    width: '40px',
-    height: '40px'
+    width: '50px',
+    height: '50px'
   };
 
   const handleLinkHover = (event, index) => {
@@ -51,16 +51,34 @@ const Nav = () => {
     }
   ];
 
+  const detailLinks = [
+    {
+      icon: <HomeIcon style={styles} />,
+      text: 'Home'
+    }
+  ]; 
+
+  const addLinks = [
+    {
+      icon: <HomeIcon style={styles} />,
+      text: 'Home'
+    }
+  ]
+
   // determinar qué links mostrar según la ruta actual
   let linksToRender = [];
   if (location.pathname === '/home') {
     linksToRender = homeLinks;
   } else if (location.pathname === '/create') {
     linksToRender = createLinks;
+  } else if (location.pathname === '/detail') {
+    linksToRender = detailLinks
+  }  else if (location.pathname === '/add') {
+    linksToRender = addLinks
   }
 
   return (
-    <nav>
+    <nav className='nav' >
       {linksToRender.map((link, index) => (
         <Link
           key={index}

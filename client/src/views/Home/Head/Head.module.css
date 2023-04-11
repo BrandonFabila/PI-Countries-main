@@ -1,0 +1,70 @@
+.contPrincipal {
+    height: 20dvh;
+    width: 97.7dvw;
+    max-width: 100dvw;
+    max-height: 30dvh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.contText {
+    font-size: xxx-large;
+    color: #d78531;
+    padding-left: 1rem;
+}
+
+.contTitle {
+    height: 55px;
+    padding-left: .05rem;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+}
+
+
+
+.inputcontainer {
+    width: 300px;
+    position: relative;
+  }
+  
+  .icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% + 5px);
+    transform: translateY(calc(-50% - 5px));
+  }
+  
+  .input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .input:focus {
+    outline: none;
+    border: 0.5px solid black;
+    box-shadow: -5px -5px 0px black;
+  }
+  
+  .inputcontainer:hover > .icon {
+    animation: anim 1s linear infinite;
+  }
+  
+  @keyframes anim {
+    0%,
+    100% {
+      transform: translateY(calc(-50% - 5px)) scale(1);
+    }
+  
+    50% {
+      transform: translateY(calc(-50% - 5px)) scale(1.1);
+    }
+  }
