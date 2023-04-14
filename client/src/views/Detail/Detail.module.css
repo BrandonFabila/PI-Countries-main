@@ -1,24 +1,68 @@
 .contPrincipal {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: space-around;
+    flex-wrap: wrap;
+    justify-items: space-around;
+    padding-top: 50px;
+    padding-bottom: 100px;
   }
 
 
 .imgCont {
-    width: 41dvh;
-    height: 25dvh;
-    margin-bottom: 50px;
+    width: 97.5dvw;
+    height: 250px;
     align-items: center;
     justify-content: center;
     align-content: center;
     justify-items: center;
 }
+.dataCont {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-items:center;
+    font-size: x-large;
+    color: #fff;
+}
 
 .imgn {
-    width: 40dvh;
-    min-width: 40dvh;
-    max-height: 20dvh;
+    width: 410px;
+    height: 240px;
     border-radius: 3.5dvw;
+}
+ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-items: space-around;
+}
+.curenderbox{
+    width: 97.5dvw;
+    background-color: #ff000015;
+    border-radius: 5rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+.tit {
+    color: rgba(255, 0, 0, 0.601)
+}
+.prin {
+    color: #d78531;
+}
+
+li{
+    color: #fff;
+}
+
+h2 {
+    color: rgb(200, 200, 255)
+}
+
+h3 {
+    color: #d78531;
 }

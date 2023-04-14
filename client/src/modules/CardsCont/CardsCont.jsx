@@ -15,7 +15,6 @@ const CardsCont = () => {
     const indexOfLastCountry = currentPage * countriesPerPage
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
     const currentCountries = allCountries ? allCountries.slice(indexOfFirstCountry, indexOfLastCountry) : [];
-    const [, setOrden] = useState('')
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     }

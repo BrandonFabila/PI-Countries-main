@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import style from './Form.module.css'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { postActivity } from '../../../redux/actions';
 
 const Form = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     //estado para inputs gracias al hook use state
     const [ form, setForm] = useState({
@@ -20,57 +25,68 @@ const Form = () => {
         temporada: "",
     });
 
-    //enlazara cada input
     const handleInputChange = (event) => {
-        // destructura el evento con las props name o value
         const { name, value } = event.target;
-        
-        //para poder modificar el estado
-        setForm({...form, [name]: value });
+      
+        setForm((prevForm) => ({
+        //utiliza el estado anterior
+          ...prevForm,
+          [name]: value,
+        }));
+      
+        validarFormulario({
+          ...form,
+          [name]: value,
+        });
+      };
+      
+    const validarFormulario = (form) => {
+        setErrors((prevErrors) => ({
+        //utiliza el estado anterior
+          ...prevErrors,
+          name: !form.name ? "El nombre de la actividad es obligatorio" : "",
+          idpais: !form.idpais
+            ? "Inserta al menos un ID"
+            : form.idpais.length <= 2
+            ? "Cada ID proporcionado debe contener 3 caracteres"
+            : "",
+          duracion: !form.duracion
+            ? "Inserta la duracion"
+            : form.duracion.length <= 5
+            ? "Especifica la duracion con: horas, días ó semanas"
+            : "",
+          dificultad: !form.dificultad ? "Selecciona la dificultad" : "",
+          temporada: !form.temporada ? "Selecciona la temporada" : "",
+        }));
+      };
 
-        validarFormulario({...form, [name]: value });
-    };
-
+      const handleFormSubmit = (event) => {
+        event.preventDefault();
+        validarFormulario(form);
+        if (Object.values(errors).every((value) => value === "")) {
+          dispatch(postActivity(form));
+          alert('Actividad Creada')
+          setForm({
+            name: "",
+            idpais: "",
+            dificultad: "",
+            duracion: "",
+            temporada: "",
+          });
+          navigate("/home");
+        }
+      };
     
-const validarFormulario = (form) => {
-
-    if (!form.name) {
-        setErrors({ ...errors, name: 'El nombre de la actividad es obligatorio'});
-    }
-  
-    if (!form.idpais) {
-        setErrors({ ...errors, idpais:'Inserta al menos un ID'});
-    } else if (form.idpais.length <= 2) {
-        setErrors({ ...errors, idpais:'Cada ID proporcionado debe contener 3 caracteres'})
-    }
-
-    if (!form.duracion) {
-        setErrors({ ...errors, duracion:'Inserta la duracion'});
-      } else if (form.duracion.length <= 5) {
-        setErrors({ ...errors, duracion:'Especifica la duracion con: horas, días ó semanas'});
-      }
-  
-    if (!form.dificultad) {
-        setErrors({ ...errors, dificultad:'Selecciona la dificultad'});
-    }
-  
-    if (!form.temporada) {
-        setErrors({ ...errors, temporada:'Selecciona la temporada'});
-    }
-
-  };
+      
 
   console.log(errors)
 
 
     return (
         <div className={style.contPrincipal} >
-
-            <div>
-                <h2>{errors.name ? errors.name : 'Inserta todos los campos requeridos'}</h2>
-            </div>
             
-            <form className={style.contForm} >
+            <form className={style.contForm} onSubmit={handleFormSubmit} >
+            
             <div className={style.inputbox}>
                 <input required="required" type="text" value={form.name} name='name' onChange={handleInputChange} />
                 <span>Actividad</span>
@@ -86,7 +102,7 @@ const validarFormulario = (form) => {
                 <span>Duración</span>
                 <i></i>
             </div>
-            </form>
+            
 
             <div className={style.puntuacion} >
                 <h2>Puntua la dificultad:</h2>
@@ -200,6 +216,14 @@ const validarFormulario = (form) => {
                     <h2>Selecciona una estacion</h2>
                 </div>
             </div>
+
+            <div>
+                <button type="submit" className={style.submit} >
+                    <strong>Crear</strong>
+                </button>
+            </div>
+            
+            </form>
             
         </div>
     )

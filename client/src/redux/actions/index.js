@@ -5,6 +5,12 @@ export const GET_COUNTRYBYID = 'GET_COUNTRYBYID'
 export const SEARCH_FAIL = 'SEARCH_FAIL'
 export const FILTER_BYCONTINENT = 'FILTER_BYCONTINENT'
 export const FILTER_BYACTIVITY = 'FILTER_BYACTIVITY'
+export const POST_ACTIVITY = 'POST_ACTIVITY'
+export const ORDER_BY_CRITERIA = 'ORDER_BY_CRITERIA'
+export const FILTER_BY_CRITERIA = 'FILTER_BY_CRITERIA'
+export const SORT_BY_NAME = 'SORT_BY_NAME'
+export const FILTER_BY_NUMBER = 'FILTER_BY_NUMBER'
+
 
 const servidor = 'http://localhost:3001/';
 
@@ -34,6 +40,8 @@ export const getAllDB = (name) => {
     }
 }
 
+
+
 export function getActivities() {
     return async function (dispatch) {
         try {
@@ -54,6 +62,17 @@ export function getActivities() {
     }
 }
 
+export const postActivity =  (form) => {
+    return async function (dispatch) {
+        try {
+            const serverPost = await axios.post(`${servidor}activities`, form)
+            return serverPost
+        } catch {
+
+        }
+    }
+}
+
 export const getCountryByID = (id) => {
     return async function (dispatch) {
         const serverData = await axios.get(`${servidor}countries/${id}`);
@@ -62,20 +81,14 @@ export const getCountryByID = (id) => {
     }
 }
 
+
+//filtros
 export const filterByContinent = (payload) => {
     return {
         type: FILTER_BYCONTINENT,
-        payload
+        payload,
     }
 }
-/*
-export const filterByContinent = () => {
-    return function (dispatch) {
-        let filtered = [];
-        let  isFiltering = false;
-        if ()
-    }
-}*/
 
 export const filterByActivity = (dispatch) => {
     console.log(dispatch)
@@ -85,3 +98,27 @@ export const filterByActivity = (dispatch) => {
     }
 }
 
+export const filterByCriteria = (values) => {
+    return { type: FILTER_BY_CRITERIA, values }
+}
+
+export function filterByNumber(values) {
+    return {
+        type: FILTER_BY_NUMBER,
+        values
+    }
+}
+
+
+//odeneamientos
+export const sortByName = (payload) => {
+    return {
+        type: SORT_BY_NAME,
+        payload,
+    }
+}
+
+
+export const orderByCriteria = (value) => {
+    return { type: ORDER_BY_CRITERIA, value }
+}

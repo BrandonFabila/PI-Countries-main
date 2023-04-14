@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Nav.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { ReactComponent as ActivityIcon } from '../extra/magazine.svg';
 import { ReactComponent as HomeIcon } from '../extra/w1.svg';
 import { ReactComponent as DelIcon } from '../extra/del.svg';
@@ -41,14 +41,6 @@ const Nav = () => {
       icon: <HomeIcon style={styles} />,
       text: 'Home'
     },
-    {
-      icon: <AddIcon style={styles} />,
-      text: 'Add'
-    },
-    {
-      icon: <DelIcon style={styles} />,
-      text: 'Delete'
-    }
   ];
 
   const detailLinks = [
@@ -67,11 +59,13 @@ const Nav = () => {
 
   // determinar qué links mostrar según la ruta actual
   let linksToRender = [];
+  const { id } = useParams();
+
   if (location.pathname === '/home') {
     linksToRender = homeLinks;
   } else if (location.pathname === '/create') {
     linksToRender = createLinks;
-  } else if (location.pathname === '/detail') {
+  } else if (location.pathname === `/detail/${id}`) {
     linksToRender = detailLinks
   }  else if (location.pathname === '/add') {
     linksToRender = addLinks

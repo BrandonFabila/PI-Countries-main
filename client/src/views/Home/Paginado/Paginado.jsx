@@ -39,8 +39,8 @@ const Paginado = ({ countriesPerPage, allCountries, paginado, currentPage, setCu
             </ul>
             {pageNumbers.length > 1 && (
               <div className={styles.buttonGroup}>
-                <button onClick={handlePrev}>Anterior</button>
-                <button onClick={handleNext}>Siguiente</button>
+                <button className={styles.pages} onClick={handlePrev}>Anterior</button>
+                <button className={styles.pages} onClick={handleNext}>Siguiente</button>
               </div>
             )}
         </nav>

@@ -5,6 +5,16 @@
     justify-content: space-around;
 }
 
+.buttonGroup{
+    padding: 30px 0px;
+}
+
+.pages{
+    width: 200px;
+    border-color: #d78531;
+    
+}
+
 .paginado {
     align-items: center;
 
