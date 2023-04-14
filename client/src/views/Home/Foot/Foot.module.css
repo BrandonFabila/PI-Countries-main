@@ -5,6 +5,7 @@
     align-items:flex-start;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: 97.5dvw;
 }
 
 .contText {

@@ -68,3 +68,30 @@
       transform: translateY(calc(-50% - 5px)) scale(1.1);
     }
   }
+
+.button {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #d78531;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #d78531;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #d78531;
+  }
+  
+  button:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #d78531;
+  }
+  
+  button:active {
+    transform: scale(0.9);
+  }

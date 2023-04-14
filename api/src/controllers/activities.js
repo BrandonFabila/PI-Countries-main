@@ -5,8 +5,9 @@ const getActivities = async( req, res ) => {
         const activities = await Activity.findAll({  // get para el select en el front que ordena por actividades
             include: Country,
         });
+        const errorARR = [{ name: '❌ No existen actividades en la DB ❌', dificultad: 0, duracion: 0, temporada: 0, idpais: 0, }]
         if (activities[0] == null) {
-            return res.status(404).json('❌ No existen actividades en la DB ❌')
+            return res.status(404).json(errorARR)
         } else {
             return res.status(200).json(activities) 
         }
@@ -18,9 +19,10 @@ const getActivities = async( req, res ) => {
 const createActivity = async ( req, res ) => {
     const { name, dificultad, duracion, temporada, idpais} = req.body
     //busca nombre de actividad en tabla Activity
-    const activityVerified = await Activity.findOne({where: { name: name}})
+    const nametoUper = name.toUpperCase();
+    const activityVerified = await Activity.findOne({where: { name: nametoUper}})
     try {
-        if ( name == null || dificultad == null || duracion  == null || temporada == null || idpais == null ) {
+        if ( nametoUper == null || dificultad == null || duracion  == null || temporada == null || idpais == null ) {
             return res.status(400).json('❌ Inserta todos los parametros ❌')
         } else {
             //si existe la actividad
@@ -51,8 +53,9 @@ const createActivity = async ( req, res ) => {
                 
             } else {
                 //crea la actividad
+                
                 const newAct = await Activity.create({ 
-                    name, 
+                    name: nametoUper, 
                     dificultad, 
                     duracion, 
                     temporada,
@@ -89,7 +92,8 @@ const createActivity = async ( req, res ) => {
 
 const deleteActivity = async ( req, res ) => {
     const { name, idpais } = req.body
-    const activityVerified = await Activity.findOne({where: { name: name}})
+    const nametoUper = name.toUpperCase();
+    const activityVerified = await Activity.findOne({where: { name: nametoUper}})
     try{
         //si no es valida la actividad
         if (!activityVerified) {

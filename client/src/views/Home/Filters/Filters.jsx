@@ -1,10 +1,19 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { filterByActivity, getActivities } from '../../../redux/actions';
 import style from './Filters.module.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const Filters = () => {
-    const { filterState, setFilterState } = useState({
+
+    const dispatch = useDispatch();
+
+    //trae todas las actividades de mi estado
+    const allActivities = useSelector((state) => state.activities)
+
+    const [ filterState, setFilterState ] = useState({
         name: "",
+        value: "",
     });
 
     const handleInputChange = (event) => {
@@ -15,7 +24,16 @@ const Filters = () => {
         setFilterState({...filterState, [name]: value });
 
     };
-    
+
+    function handleFilterActivities(e) {
+        e.preventDefault();
+        return dispatch(filterByActivity({type: 'FILTER_BYACTIVITY', activity: e.target.value}))
+    }
+
+    useEffect( () => {
+        dispatch(getActivities())
+    }, [dispatch])
+
     return (
         <div className={style.contPrincipal} >
 
@@ -144,26 +162,35 @@ const Filters = () => {
                     <h2>Filtra por actividad:</h2>
                 </div>
                 <div className={style.seasonstile} >
-                    <select className={style.select} >
-                        <option value="selected">Selecciona una actividad</option>
-                        <option value="asc">Aqui van las actividades</option>
+                    <select className={style.select} onChange={e => handleFilterActivities(e)} >
+                        <option value="All">Selecciona una actividad</option>
+                        {allActivities?.sort(function (a, b) {
+                                if (a.name < b.name) return -1
+                                if (a.name > b.name) return 1
+                                return 0
+                            }).map(e => {
+                                return (
+                                    <option key={e.id} value={e.name}>{e.name}</option>
+                                )
+                            })}
                     </select>
                 </div>
             </div>
+
             <div className={style.filters}>
                 <div className={style.seasonstile} >
                     <h2>Ordena:</h2>
                 </div>
                 <div className={style.seasonstile} >
                     <select className={style.select} >
-                        <option value="selected">Por Nombre</option>
+                        <option value="All">Por Nombre</option>
                         <option value="asc">A - Z</option>
                         <option value="desc">Z - A</option>
                     </select>
                 </div>
                 <div className={style.seasonstile} >
                     <select className={style.select} >
-                        <option value="selected">Por Poblacion</option>
+                        <option value="All">Por Poblacion</option>
                         <option value="asc">Ascendente</option>
                         <option value="desc">Descendente</option>
                     </select>

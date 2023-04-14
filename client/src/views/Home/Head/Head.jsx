@@ -1,5 +1,8 @@
 import style from './Head.module.css'
 import { ReactComponent as WorldIcon } from '../../../modules/extra/w1.svg';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { getActivities, getAllDB } from '../../../redux/actions';
 
 
 const Head = () => {
@@ -7,6 +10,33 @@ const Head = () => {
         width: '50px',
         height: '50px'
       };
+
+    const dispatch = useDispatch();
+    const [ name, setName ] = useState('');
+    
+    //input
+    function handleInputChange(e) {
+      e.preventDefault();
+      setName(e.target.value);
+    }
+
+    //action
+    function handleSubmit(e) {
+        e.preventDefault();
+        let found = getAllDB(name);
+        if (!name) {
+            return alert('Debe ingresar el nombre');
+        } else {
+            dispatch(found)
+        }
+    }
+
+    //actualizar
+    function handleClick(e) {
+        e.preventDefault();
+        dispatch(getAllDB())
+        dispatch(getActivities())
+    }
 
     return (
         <div className={style.contPrincipal}>
@@ -18,9 +48,24 @@ const Head = () => {
                     Countries Tour
                 </h1>
             </div>
+            <div>
+                <button 
+                    className={style.button} 
+                    onClick={e =>{ handleClick(e)}} >actualizar</button>
+            </div>
             <div className={style.inputcontainer}>
-                <input type="text" name="text" className={style.input} placeholder="SEARCH BY NAME OR ID" />
-                <span className={style.icon}> 
+                <input 
+                    type="text" 
+                    name="search" 
+                    className={style.input} 
+                    placeholder="SEARCH BY NAME" 
+                    onChange={e => handleInputChange(e)}
+                    onKeyPress={e => e.key === 'Enter' && handleSubmit(e)}
+                />
+                <span 
+                    className={style.icon} 
+                    onClick={e => handleSubmit(e)} 
+                > 
                     <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>

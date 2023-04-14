@@ -6,7 +6,7 @@ import Filters from './Filters/Filters'
 import Paginado from './Paginado/Paginado'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getAllDB } from '../../redux/actions'
+import { getActivities, getAllDB } from '../../redux/actions'
 
 const Home = () => {
     const dispatch = useDispatch();

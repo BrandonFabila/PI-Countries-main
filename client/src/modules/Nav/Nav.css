@@ -1,4 +1,4 @@
-nav {
+.nav {
     color: rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.3);
     width: max-content;
@@ -17,7 +17,7 @@ nav {
     align-items: center;
 }
 
-nav a {
+.nav a {
     background: transparent;
     padding: 0.5rem;
     height: 50px;
@@ -28,11 +28,11 @@ nav a {
     font-size: 1.1rem;
 }
 
-nav a:hover {
+.nav a:hover {
     background: rgba(84, 241, 76, 0.3);
 }
 
-nav a.active {
+.nav a.active {
     background: var(--color-primary);
     color: var(--color-bg);
 }

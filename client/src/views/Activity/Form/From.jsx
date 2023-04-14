@@ -78,7 +78,7 @@ const validarFormulario = (form) => {
             </div>
             <div className={style.inputbox}>
                 <input required="required" type="text" value={form.idpais} name='idpais' onChange={handleInputChange} />
-                <span>ID's de paises | ejemplo: MEX, atf, cCA</span>
+                <span>ID's de paises | ejemplo: MEX, atf, aRG</span>
                 <i></i>
             </div>
             <div className={style.inputbox}>
